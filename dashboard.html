@@ -1,0 +1,407 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudySync | Dashboard</title>
+        <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <script>
+    const savedTheme = localStorage.getItem("studySyncTheme") || "light";
+    document.documentElement.setAttribute("data-theme", savedTheme);
+    </script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="dashboard-container">
+
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+    <div class="brand">
+        <div class="brand-icon">
+            <i class="bi bi-journal-check"></i>
+        </div>
+
+        <div class="brand-text">
+            <h2>StudySync</h2>
+            <span>ACADEMIC SYSTEM</span>
+        </div>
+
+        <button type="button"
+                class="sidebar-toggle"
+                id="sidebarToggle"
+                aria-label="Toggle sidebar">
+            <i class="bi bi-layout-sidebar-inset"></i>
+        </button>
+    </div>
+
+    <p class="menu-label">MAIN MENU</p>
+
+    <nav class="sidebar-nav">
+
+        <a href="dashboard.html" class="active">
+            <span class="nav-icon"><i class="bi bi-house-door"></i></span>
+            <span class="nav-label">Dashboard</span>
+        </a>
+
+        <a href="subjects.html">
+            <span class="nav-icon"><i class="bi bi-book"></i></span>
+            <span class="nav-label">My Subjects</span>
+        </a>
+
+        <a href="assignments.html">
+            <span class="nav-icon"><i class="bi bi-clipboard-check"></i></span>
+            <span class="nav-label">My Assignments</span>
+        </a>
+
+        <a href="schedule.html">
+            <span class="nav-icon"><i class="bi bi-calendar-week"></i></span>
+            <span class="nav-label">Study Schedule</span>
+        </a>
+
+        <a href="progress.html">
+            <span class="nav-icon"><i class="bi bi-bar-chart-line"></i></span>
+            <span class="nav-label">Progress Report</span>
+        </a>
+
+    </nav>
+
+<div class="sidebar-bottom">
+
+    <div class="profile">
+        <div class="profile-dropdown">
+
+            <!-- PROFILE BUTTON -->
+            <button type="button"
+                    class="profile-trigger"
+                    id="profileTrigger"
+                    aria-expanded="false">
+
+                <span class="profile-avatar">
+                    <i class="bi bi-person-fill"></i>
+                </span>
+
+                <span class="profile-trigger-info">
+                    <span class="profile-trigger-name">User</span>
+                    <span class="profile-trigger-subtitle">My Profile</span>
+                </span>
+
+                <i class="bi bi-chevron-down profile-chevron"></i>
+            </button>
+
+            <!-- PROFILE POPUP -->
+            <div class="profile-menu" id="profileMenu">
+
+                <!-- VIEW PROFILE -->
+                <div id="profileView">
+
+                    <div class="profile-menu-heading">
+                        <span class="profile-avatar profile-avatar-large">
+                            <i class="bi bi-person-fill"></i>
+                        </span>
+
+                        <div>
+                            <h4 id="profileName">Name</h4>
+                            <p>Academic Account</p>
+                        </div>
+                    </div>
+
+                    <div class="profile-details">
+
+                        <div class="profile-detail-item">
+                            <span>STUDENT ID</span>
+                            <strong id="profileStudentId">2026XXXXXX</strong>
+                        </div>
+
+                        <div class="profile-detail-item">
+                            <span>FACULTY</span>
+                            <strong id="profileFaculty">Faculty of Information Science</strong>
+                        </div>
+
+                        <div class="profile-detail-item">
+                            <span>STUDY LOCATION</span>
+                            <strong id="profileLocation">Universiti Teknologi MARA</strong>
+                        </div>
+
+                    </div>
+
+                    <button type="button"
+                            class="profile-edit-button"
+                            id="editProfileButton">
+                        <i class="bi bi-pencil-square"></i>
+                        Edit Profile
+                    </button>
+
+                </div>
+
+                <!-- EDIT PROFILE -->
+                <form id="profileEditForm" hidden>
+
+                    <div class="profile-menu-heading">
+                        <div>
+                            <h4>Edit Profile</h4>
+                            <p>Update your academic information.</p>
+                        </div>
+                    </div>
+
+                    <div class="profile-edit-fields">
+
+                        <label for="editProfileName">Full Name</label>
+                        <input type="text" id="editProfileName" required>
+
+                        <label for="editProfileStudentId">Student ID</label>
+                        <input type="text" id="editProfileStudentId" required>
+
+                        <label for="editProfileFaculty">Faculty</label>
+                        <input type="text" id="editProfileFaculty" required>
+
+                        <label for="editProfileLocation">Study Location</label>
+                        <input type="text" id="editProfileLocation" required>
+
+                    </div>
+
+                    <div class="profile-edit-actions">
+                        <button type="submit" class="profile-save-button">
+                            Save Changes
+                        </button>
+
+                        <button type="button"
+                                class="profile-cancel-button"
+                                id="cancelProfileEdit">
+                            Cancel
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- LOGOUT -->
+    <a href="index.html" class="logout">
+        <span><i class="bi bi-box-arrow-left"></i></span>
+        <span class="nav-label">Log Out</span>
+    </a>
+
+</div>
+
+    </aside>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- MAIN CONTENT -->
+<main class="main-content dashboard-page">
+
+    <header class="dashboard-header">
+        <button type="button" class="mobile-sidebar-toggle"
+                id="mobileSidebarToggle"
+                aria-label="Open navigation menu">
+            <i class="bi bi-list"></i>
+        </button>
+
+        <div>
+            <h1>Dashboard</h1>
+            <p>Welcome back! Here's your academic overview.</p>
+        </div>
+
+        <div class="profile">
+            <button type="button" class="theme-toggle"
+                    id="themeToggle"
+                    aria-label="Switch to dark mode"
+                    title="Switch theme">
+                <i class="bi bi-moon-stars-fill" id="themeIcon"></i>
+            </button>
+
+            <span class="nav-icon"><i class="bi bi-mortarboard"></i></span>
+            <p>Student</p>
+        </div>
+    </header>
+
+    <!-- COMPACT SUMMARY -->
+    <section class="summary-cards dashboard-summary">
+
+        <div class="summary-card">
+            <div class="dashboard-stat-icon"><i class="bi bi-book"></i></div>
+            <div>
+                <h3>Subjects</h3>
+                <h2 id="dashboardSubjects">6</h2>
+            </div>
+        </div>
+
+        <div class="summary-card">
+            <div class="dashboard-stat-icon"><i class="bi bi-clipboard-check"></i></div>
+            <div>
+                <h3>Assignments</h3>
+                <h2 id="dashboardTotal">4</h2>
+            </div>
+        </div>
+
+        <div class="summary-card">
+            <div class="dashboard-stat-icon"><i class="bi bi-check-circle"></i></div>
+            <div>
+                <h3>Completed</h3>
+                <h2 id="dashboardCompleted">2</h2>
+            </div>
+        </div>
+
+        <div class="summary-card">
+            <div class="dashboard-stat-icon"><i class="bi bi-hourglass-split"></i></div>
+            <div>
+                <h3>Pending</h3>
+                <h2 id="dashboardPending">2</h2>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- ACADEMIC PROGRESS -->
+    <section class="content-card dashboard-progress-card">
+
+        <div class="dashboard-section-heading">
+            <div>
+                <h3>Academic Progress</h3>
+                <p>Keep moving forward, one task at a time.</p>
+            </div>
+            <a href="progress.html">View Report</a>
+        </div>
+
+        <div class="dashboard-progress-info">
+            <div>
+                <h2 id="dashboardCompletionRate">50%</h2>
+                <span>Overall Completion</span>
+            </div>
+
+            <p>
+                <strong id="dashboardCompletedLegend">2</strong> completed
+                <span class="progress-separator">·</span>
+                <strong id="dashboardPendingLegend">2</strong> pending
+            </p>
+        </div>
+
+<div class="dashboard-wave-container">
+    <svg class="dashboard-wave" viewBox="0 0 600 130"
+         xmlns="http://www.w3.org/2000/svg">
+
+        <!-- Background wave -->
+        <path
+            id="waveTrack"
+            d="M15 75 C65 75 65 25 125 25
+               S185 105 245 75
+               S305 25 365 50
+               S425 105 485 75
+               S545 25 585 45"
+            class="wave-track"
+        />
+
+        <!-- Completed wave -->
+        <path
+            id="waveProgress"
+            d="M15 75 C65 75 65 25 125 25
+               S185 105 245 75
+               S305 25 365 50
+               S425 105 485 75
+               S545 25 585 45"
+            class="wave-progress"
+        />
+
+        <!-- Moving flag -->
+        <g id="progressFlag">
+            <line x1="0" y1="0" x2="0" y2="-35"
+                  class="flag-pole"/>
+
+            <path d="M0 -35 L28 -28 L0 -20 Z"
+                  class="flag-cloth"/>
+        </g>
+
+    </svg>
+
+    <div class="wave-labels">
+        <span>START</span>
+        <span>YOUR GOAL</span>
+    </div>
+</div>
+
+    </section>
+
+    <!-- MY SUBJECTS MIND MAP -->
+    <section class="content-card dashboard-subject-card">
+
+        <div class="dashboard-section-heading">
+            <div>
+                <h3>My Subjects</h3>
+                <p>Your academic subjects at a glance.</p>
+            </div>
+            <a href="subjects.html">View All</a>
+        </div>
+
+        <div id="dashboardSubjectMap" class="subject-mindmap">
+            <p>Loading subjects...</p>
+        </div>
+
+    </section>
+
+    <!-- WEEKLY CALENDAR -->
+    <section class="content-card dashboard-calendar-card">
+
+        <div class="dashboard-section-heading">
+            <div>
+                <h3>Weekly Study Calendar</h3>
+                <p>See how your study sessions are distributed throughout the week.</p>
+            </div>
+            <a href="schedule.html">View Schedule</a>
+        </div>
+
+        <div id="dashboardWeeklyCalendar" class="weekly-calendar">
+            <p>Loading weekly schedule...</p>
+        </div>
+
+    </section>
+
+    <!-- UPCOMING DEADLINES -->
+    <section class="content-card dashboard-deadlines-card">
+
+        <div class="dashboard-section-heading">
+            <div>
+                <h3>Upcoming Deadlines</h3>
+                <p>Stay prepared and never miss a submission.</p>
+            </div>
+            <a href="assignments.html">View All</a>
+        </div>
+
+        <div id="upcomingDeadlines" class="dashboard-deadline-list">
+            <p>Loading upcoming deadlines...</p>
+        </div>
+
+    </section>
+
+<footer class="site-footer">
+    <p class="footer-tagline">
+        Your academic journey, organised in one place.
+    </p>
+
+    <div class="footer-bottom">
+        <span>© 2026 StudySync. All rights reserved.</span>
+        <span>Built for managing your tasks.</span>
+    </div>
+</footer>
+
+</main>
+
+</div>
+
+<script src="layout.js"></script>
+<script src="theme.js"></script>
+<script src="dashboard.js"></script>
+
+</body>
+</html>

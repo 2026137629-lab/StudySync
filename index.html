@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>StudySync | Login</title>
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <script>
+    const savedTheme = localStorage.getItem("studySyncTheme") || "light";
+    document.documentElement.setAttribute("data-theme", savedTheme);
+    </script>
+
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+
+    <div class="login-container">
+
+        <div class="login-card">
+
+            <button type="button"
+                    class="theme-toggle login-theme-toggle"
+                    id="themeToggle"
+                    aria-label="Switch to dark mode"
+                    title="Switch theme">
+                <i class="bi bi-moon-stars-fill" id="themeIcon"></i>
+            </button>
+
+            <h1>StudySync</h1>
+            <p class="subtitle">Your academic journey starts here.</p>
+
+            <h2>Welcome Back!</h2>
+            <p class="description">Please login to your account.</p>   
+            
+    <form id="loginForm">
+
+        <label for="email">Email Address</label>
+        <input
+            type="email"
+            id="email"
+            value="student@studysync.com"
+        >
+
+        <label for="password">Password</label>
+        <input
+            type="password"
+            id="password"
+            value="123456"
+        >   
+
+        <button type="submit">Login to StudySync</button>
+
+        <p id="loginMessage"></p>
+
+    </form>
+
+            <p class="footer-text">Study smarter, achieve better.</p>
+
+        </div>
+
+    </div>
+
+
+<footer class="site-footer">
+    <p class="footer-tagline">
+        Your academic journey, organised in one place.
+    </p>
+
+    <div class="footer-bottom">
+        <span>© 2026 StudySync. All rights reserved.</span>
+        <span>Built for managing your tasks.</span>
+    </div>
+</footer>
+
+
+    <script src="theme.js"></script>
+    <script src="script.js"></script>
+    
+</body>
+</html>
