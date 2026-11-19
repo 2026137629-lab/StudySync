@@ -3879,3 +3879,67 @@ canvas {
         font-size: 18px;
     }
 }
+
+/* =========================================
+   STUDYSYNC - TABLET COLLAPSIBLE SIDEBAR
+========================================= */
+
+@media (min-width: 761px) and (max-width: 1100px) {
+
+    /* Collapsed Sidebar */
+    .dashboard-container .sidebar.collapsed {
+        flex: 0 0 82px !important;
+        width: 82px !important;
+        min-width: 82px !important;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    /* Hide Sidebar Labels */
+    .dashboard-container .sidebar.collapsed .brand-text,
+    .dashboard-container .sidebar.collapsed .user-info,
+    .dashboard-container .sidebar.collapsed .menu-label,
+    .dashboard-container .sidebar.collapsed .nav-label,
+    .dashboard-container .sidebar.collapsed .profile-trigger-info,
+    .dashboard-container .sidebar.collapsed .profile-chevron,
+    .dashboard-container .sidebar.collapsed .logout-label {
+        display: none !important;
+    }
+
+    /* Center Brand */
+    .dashboard-container .sidebar.collapsed .brand {
+        justify-content: center !important;
+    }
+
+    /* Center Navigation */
+    .dashboard-container .sidebar.collapsed .sidebar-nav a {
+        justify-content: center !important;
+        gap: 0 !important;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    /* Center Profile */
+    .dashboard-container .sidebar.collapsed .user-profile {
+        justify-content: center !important;
+    }
+
+    .dashboard-container .sidebar.collapsed .profile-dropdown {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .dashboard-container .sidebar.collapsed .profile-trigger {
+        width: 48px;
+        height: 48px;
+        padding: 5px;
+        justify-content: center;
+        gap: 0;
+    }
+
+    .dashboard-container .sidebar.collapsed .logout {
+        justify-content: center !important;
+        font-size: 0;
+    }
+}
