@@ -11,37 +11,32 @@ document.addEventListener("DOMContentLoaded", function () {
     const mobileScreen = window.matchMedia("(max-width: 760px)");
     const tabletScreen = window.matchMedia("(min-width: 761px) and (max-width: 1100px)");
 
-    // Restore saved desktop sidebar state
+    // Restore saved sidebar state
     function syncSidebarMode() {
 
-    if (!sidebar) return;
+        if (!sidebar) return;
 
-    const savedSidebarState = localStorage.getItem("studySyncSidebar");
+        const savedSidebarState = localStorage.getItem("studySyncSidebar");
 
-    if (mobileScreen.matches) {
+        if (mobileScreen.matches) {
 
-        sidebar.classList.remove("collapsed");
-
-    } else if (tabletScreen.matches) {
-
-        sidebar.classList.remove("collapsed");
-        closeMobileSidebar();
-
-    } else {
-
-        if (savedSidebarState === "collapsed") {
-            sidebar.classList.add("collapsed");
-        } else {
             sidebar.classList.remove("collapsed");
+
+        } else {
+
+            if (savedSidebarState === "collapsed") {
+                sidebar.classList.add("collapsed");
+            } else {
+                sidebar.classList.remove("collapsed");
+            }
+
+            closeMobileSidebar();
         }
 
-        closeMobileSidebar();
+        updateSidebarIcon();
     }
 
-    updateSidebarIcon();
-    }
-
-    // Update desktop toggle icon
+    // Update sidebar toggle icon
     function updateSidebarIcon() {
 
         if (!sidebar || !sidebarToggle) return;
@@ -55,12 +50,12 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Desktop sidebar toggle
+    // Desktop and Tablet sidebar toggle
     if (sidebar && sidebarToggle) {
 
         sidebarToggle.addEventListener("click", function () {
 
-            if (tabletScreen.matches) return;
+            if (mobileScreen.matches) return;
 
             sidebar.classList.toggle("collapsed");
 
@@ -80,9 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (!sidebar || !overlay) return;
 
-        // Prevent desktop collapsed state from affecting mobile
         sidebar.classList.remove("collapsed");
-
         sidebar.classList.add("mobile-open");
         overlay.classList.add("active");
     }
@@ -134,7 +127,7 @@ document.addEventListener("DOMContentLoaded", function () {
     mobileScreen.addEventListener("change", syncSidebarMode);
     tabletScreen.addEventListener("change", syncSidebarMode);
 
-    // Apply correct sidebar state on page load
+    // Apply sidebar state on page load
     syncSidebarMode();
 
 });
