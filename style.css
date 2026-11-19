@@ -1718,89 +1718,78 @@ canvas {
 }
 
 
+
 /* =========================================
    STUDYSYNC - TABLET SIDEBAR FIX
 ========================================= */
 
 @media (min-width: 761px) and (max-width: 1100px) {
 
-    /* Keep the sidebar at a consistent tablet width */
-    .dashboard-container .sidebar,
-    .dashboard-container .sidebar.collapsed {
-        flex: 0 0 260px !important;
-        width: 260px !important;
-        min-width: 260px !important;
+    /* Default expanded sidebar */
+    .dashboard-container .sidebar {
+        flex: 0 0 260px;
+        width: 260px;
+        min-width: 260px;
         padding-left: 12px;
         padding-right: 12px;
     }
 
-    /* FORCE vertical stack for navigation */
-    .sidebar nav,
-    .sidebar-nav {
-        display: flex !important;
-        flex-direction: column !important;
-        grid-template-columns: none !important;
-        gap: 6px !important;
+    /* Collapsed sidebar */
+    .dashboard-container .sidebar.collapsed {
+        flex: 0 0 82px !important;
+        width: 82px !important;
+        min-width: 82px !important;
+        padding-left: 12px;
+        padding-right: 12px;
     }
 
-    /* Ensure links span the full width and don't overflow */
-    .sidebar nav a,
-    .sidebar-nav a,
-    .sidebar.collapsed nav a,
-    .sidebar.collapsed .sidebar-nav a {
-        display: flex !important;
-        align-items: center !important;
-        justify-content: flex-start !important;
-        width: 100% !important;
-        min-width: 0 !important;
-        box-sizing: border-box;
-        gap: 10px;
-        padding: 10px 12px;
-        white-space: nowrap !important;
+    /* Hide text when collapsed */
+    .sidebar.collapsed .brand > div:last-child,
+    .sidebar.collapsed .menu-label,
+    .sidebar.collapsed .sidebar-nav a .nav-label,
+    .sidebar.collapsed nav a .nav-label,
+    .sidebar.collapsed .user-profile > div:last-child,
+    .sidebar.collapsed .logout .logout-label {
+        display: none !important;
+    }
+
+    /* Center navigation icons */
+    .sidebar.collapsed .sidebar-nav a,
+    .sidebar.collapsed nav a {
+        justify-content: center !important;
+        gap: 0 !important;
+        padding-left: 8px;
+        padding-right: 8px;
+        font-size: 0;
+    }
+
+    .sidebar.collapsed .nav-icon {
+        flex: 0 0 auto;
+        font-size: 18px;
+    }
+
+    /* Center brand and profile */
+    .sidebar.collapsed .brand,
+    .sidebar.collapsed .user-profile,
+    .sidebar.collapsed .logout {
+        justify-content: center;
+    }
+
+    /* Normal navigation when expanded */
+    .sidebar:not(.collapsed) .sidebar-nav a,
+    .sidebar:not(.collapsed) nav a {
+        justify-content: flex-start;
         font-size: 13px;
     }
 
-    /* Keep icons at a consistent size */
-    .sidebar nav a .nav-icon,
-    .sidebar-nav a .nav-icon {
-        flex: 0 0 22px;
-        width: 22px;
-    }
-
-    /* Ensure labels stay contained */
-    .sidebar nav a .nav-label,
-    .sidebar-nav a .nav-label,
-    .sidebar.collapsed .nav-label {
-        display: inline-block !important;
-        flex: 1 1 auto;
-        min-width: 0;
-        white-space: nowrap !important;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    /* Restore brand and profile information */
-    .sidebar.collapsed .brand-text,
-    .sidebar.collapsed .user-info,
-    .sidebar.collapsed .menu-label {
-        display: block !important;
-    }
-
-    .sidebar.collapsed .brand {
-        justify-content: flex-start !important;
-    }
-
-    .sidebar.collapsed .user-profile {
-        justify-content: flex-start !important;
-    }
-
-    /* Keep main content flexible */
+    /* Keep main content responsive */
     .main-content {
         flex: 1 1 0;
         width: auto;
         min-width: 0;
     }
 }
+
 
 
 /* =========================================
